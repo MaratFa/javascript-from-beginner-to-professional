@@ -1,4 +1,6 @@
 /*
+    --Company product catalog--
+    
     1. Create an array to hold an inventory of store items.
     2. Create three items, each having the properties of name, model, cost, and
     quantity.
@@ -9,26 +11,30 @@
     structure.
 */
 
-const inventory = [
+const inventory = [    
 ];
+
 const item_1 = {
     name: "name_1",
     model: "model_1",
     cost: "1 $",
     quantity: 1 
 }
+
 const item_2 = {
     name: "name_2",
     model: "model_2",
     cost: "2 $",
     quantity: 2 
 }
+
 const item_3 = {
     name: "name_3",
     model: "model_3",
     cost: "3 $",
     quantity: 3 
 }
+
 inventory.push(item_1, item_2, item_3)
 console.log(inventory)
 console.log(inventory[2].quantity)
