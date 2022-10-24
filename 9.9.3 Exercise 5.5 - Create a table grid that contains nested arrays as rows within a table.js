@@ -34,18 +34,16 @@
 
 */
 
-const gridArray;
-let numberOfCells = 64;
+const gridArray = [];
+let columns = 8;
+let rows = 8;
 let counter = 0;
-let rowArray;
-for (let i = 0; i <= numberOfCells; i++) {
-    if (numberOfCells % 8 === 0) {
-        if (gridArray[i] === undefined) {
-            
-        } else {
-            gridArray.push(gridArray[i]);
-        }
-    delete ...;
-    }
+let rowArray = [];
+for (let i = 0; i < rows; i++) {
+   for (let j = 0; j < columns; j++) {
+      rowArray[j] = ++counter;
+   }
+   gridArray.push(rowArray);
+   rowArray = [];
 }
-console.log(gridArray)
+console.table(gridArray)
