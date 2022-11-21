@@ -1,4 +1,6 @@
 /*
+    -- Description--
+  
     Create variables for three numbers: a, b, and c. Update these variables with the
     following actions using the assignment operators:
     - Add b to a;
