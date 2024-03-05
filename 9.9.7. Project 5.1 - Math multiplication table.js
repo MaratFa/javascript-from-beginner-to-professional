@@ -28,3 +28,4 @@ for (let i = 0; i < rows; i++) {
 }
 
 console.table(finalTable);
+
