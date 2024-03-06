@@ -17,10 +17,11 @@
 
 
 
-/* 1-7 */
+/* 1-2 */
 let output = "";
 let numberToSkip = 2;
 
+/* 3-7 */
 for (let i = 0; i < 10; i++) {
   if (i === numberToSkip) {
     continue;
@@ -31,8 +32,6 @@ for (let i = 0; i < 10; i++) {
 }
 
 /* 8 */
-let output = "";
-let numberToSkip = 2;
 
 for (let i = 0; i < 10; i++) {
   if (i === numberToSkip) {
