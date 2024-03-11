@@ -7,7 +7,7 @@ a variable of the same name. Within the function, print the local value to the
 console: */
 
 (function () {
-  val = 2000;
+  let val = 2000;
   console.log(val);
 })();
 
@@ -18,7 +18,7 @@ variable, along with the variable name you've been using: what value does it
 contain now?: */
 
 let result = (function () {
-  val = 3000;
+  let val = 3000;
   return val;
 })();
 
