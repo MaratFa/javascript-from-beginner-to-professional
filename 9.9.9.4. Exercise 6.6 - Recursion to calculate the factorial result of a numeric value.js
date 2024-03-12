@@ -3,7 +3,7 @@
 function recursion(val) {
   console.log(val);
 
-  if (val == 0) {
+  if (val === 0) {
     return 1;
 
     /* 2. If the parameter is equal to 0, it should return the value of 1. Otherwise, it should
