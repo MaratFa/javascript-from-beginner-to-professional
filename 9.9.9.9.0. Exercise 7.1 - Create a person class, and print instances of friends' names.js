@@ -17,5 +17,5 @@ let person2 = new Person("Jackie", "Chan");
 
 // 4. Output both friends into the console with a greeting of hello:
 
-console.log("Hello", person1.firstname, person1.lastname);
-console.log("Hello", person2.firstname, person2.lastname);
+console.log("Hello " + person1.firstname);
+console.log("Hello " + person2.firstname);
