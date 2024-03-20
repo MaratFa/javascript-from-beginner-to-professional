@@ -9,8 +9,9 @@ Using the array filter() method, this will create a new array using the elements
 pass the test condition implemented by the function. The final result will be:
 
 [ 'Laurence', 'Mike', 'Larry', 'Kim', 'Joanne' ]
-
 */
+
+
 
 /* 1. Create an array of names of people. Make sure you include duplicates. The
 exercise will remove the duplicate names: */
@@ -36,12 +37,13 @@ temporarily as this will build the new array with all the results in the origina
 array: */
 
 array = array.filter((currentValue, index, arr) => {
+
   /* 3. Add a console.log call within the function that will output the index value
     of the current item in the array. Also add the value so you can see the results
     of the item value that has the current index number and the first matching
     result from the array's index value: */
 
-  console.log(index, currentValue);
+  console.log(index, currentValue, array.indexOf(currentValue));
 
   /* 4. Using indexOf() the current value returns the index value of the item
   and applies the condition to check to see if it matches the original index
@@ -49,8 +51,8 @@ array = array.filter((currentValue, index, arr) => {
   duplicates will be false and not get added to the new array. false will not
   return the value into the new array. The duplicates will all be false since the
   indexof() only gets the first match in the array: */
-  
-  return arr.indexOf(currentValue) == index;
+
+  return arr.indexOf(currentValue) === index;
 });
 
 /* 5. Output the new, unique value array onto the console: */
