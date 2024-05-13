@@ -28,7 +28,7 @@
 // 11. Return the final result and invoke the function with the original string word
 // as an argument. Output this to the console.
 
-const word = "word";
+const word = "JavaScript";
 
 const func = (word) => {
   console.log("Original word: ", word);
@@ -45,6 +45,7 @@ const func = (word) => {
     console.log("New scrambled version of the original word: ", tempString);
     console.log("The remaining letters of the original word: ", word);
   }
+  return tempString;
 };
 
 func(word);
