@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div class="output"></div>
+    <script>
+      // 1. Select the page element as a JavaScript object.
+      let element = document.querySelector(".output");
+      // 2. Update the textContent property of the selected page element.
+      element.textContent = "Hello World!";
+      // 3. Using the classList.add object method, add a class of red to the element.
+      element.classList.add("red");
+      // 4. Update the id property of the element to tester.
+      element.id = "tester";
+      // 5. Through the style object, add a backgroundColor property of red to the page element.
+      element.style.backgroundColor = "red";
+      // 6. Get the document URL via document.URL and update the text of the output
+      // element to contain the value of the document URL. You can log it in the
+      // console first to ensure you have the correct value.
+      console.log(document.URL);
+      element.textContent = document.URL;
+    </script>
+  </body>
+</html>
