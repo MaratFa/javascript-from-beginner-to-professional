@@ -1,0 +1,26 @@
+<!-- 1. Create an HTML file and add four HTML elements, adding the same class to
+each one -->
+<html>
+  <head> </head>
+  <body>
+    <!-- 2. Add some content within each element so you can distinguish between them. -->
+    <h1 class="example">H1</h1>
+    <h2 class="example">H2</h2>
+    <h3 class="example">H3</h3>
+    <h4 class="example">H4</h4>
+  </body>
+  <script>
+    // 3. Within a script element, use QuerySelectorAll() to select all the matching
+    // occurrences of the elements with that class and store them in a variable.
+    let elements = document.querySelectorAll(".example");
+    // 4. Output all the elements into the console, first as an array and then looping
+    // through them to output them one by one.
+    console.log(elements);
+
+    for (i = 0; i < elements.length; i++) {
+      console.log(elements[i]);
+    }
+
+    elements.forEach((el) => console.log(el));
+  </script>
+</html>
