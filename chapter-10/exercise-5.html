@@ -1,0 +1,21 @@
+<!-- 1. Create another simple HTML file. -->
+<html>
+  <head> </head>
+  <body>
+    <!-- 2. Create four HTML elements adding the same class to each. They can be
+    different tag  names as long as they have the class within the element attribute.
+    3. Add some content within each element so you can distinguish between them. -->
+    <h1 class="example">H1</h1>
+    <h2 class="example">H2</h2>
+    <h3 class="example">H3</h3>
+    <h4 class="example">H4</h4>
+  </body>
+  <script>
+    // 4. Within a script element, use querySelector() to select the first occurrence
+    // of the elements with that class and store it in a variable. If there is more than
+    // one matching result in querySelector(), it will return the first one.
+    let element = document.querySelector(".example");
+    // 5. Output the element into the console.
+    console.log(element);
+  </script>
+</html>
