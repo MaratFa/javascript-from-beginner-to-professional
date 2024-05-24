@@ -2,9 +2,11 @@
 <html>
   <head></head>
   <body>
-    <div id="one">Don't click here!</div>
     <script>
-      document.querySelector("#one").onclick = () => console.log("fff");
+      function reveal(el) {
+        console.log(el);
+      }
     </script>
+    <button onclick="reveal(this)">Click here!</button>
   </body>
 </html>
