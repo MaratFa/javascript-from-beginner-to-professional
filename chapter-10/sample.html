@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head></head>
+  <body>
+    <script>
+      function changeVisibility() {
+        document.getElementById("shape").classList.toggle("hide");
+      }
+    </script>
     <style>
       .hide {
         display: none;
       }
-
       .square {
         height: 100px;
         width: 100px;
         background-color: yellow;
       }
-
-      .square.blue {
-        background-color: blue;
-      }
     </style>
-  </head>
-  <body>
-    <script>
-      function disappear() {
-        document.getElementById("shape").classList.add("hide");
-      }
-    </script>
-    <div id="shape" class="square blue"></div>
+    <div id="shape" class="square"></div>
 
-    <button onclick="disappear()">Disappear!</button>
+    <button onclick="changeVisibility()">Magic!</button>
   </body>
 </html>
