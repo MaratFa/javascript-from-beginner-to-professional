@@ -4,12 +4,44 @@
     <title>Complete JavaScript Course</title>
   </head>
   <body>
-    <div id="message"></div>
+    <div id="message"><h1>My Friends Table</h1></div>
     <div id="output"></div>
     <script>
-      // 1. Create an array of names. You can add as many as you want—all the string
+      // 1. Create an array of names. You can add as many as you want — all the string
       // values will be output onto the page within a table.
-      let names = ['Laurence', 'Mike', 'Joht', 'Larry', Kim]
+      let names = [
+        "Laurence",
+        "Mike",
+        "Joht",
+        "Larry",
+        "Kim",
+        "Joanne",
+        "Lisa",
+        "Janet",
+        "Jane",
+      ];
+
+      // 2. Select the page elements as JavaScript objects.
+      const divs = document.querySelectorAll("div");
+
+      // 3. Add a function and also invoke that function within the JavaScript code. The
+      // function can be called build() as it will be building the page content. Within
+      // the build function, you will be setting up the HTML in a table.
+      function build() {
+        // 4. Create a table named html, and within the tags, loop through the contents of
+        // the array and output the results into the html table.
+        const html = document.createElement("table");
+        names.forEach((x) => {
+          const el = document.createElement("tr");
+          el.innerText = x;
+          html.appendChild(el);
+        });
+
+        // 8. Add the table of HTML code to the page.
+        divs[1].appendChild(html);
+      }
+
+      build();
     </script>
   </body>
 </html>
