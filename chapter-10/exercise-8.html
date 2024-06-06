@@ -3,14 +3,14 @@
   <head>
     <title>Complete JavaScript Course</title>
   </head>
-  <body>   
+  <body>
+    <h1>My Friends</h1>
     <div id="output"></div>
     <br />
     <div id="message"></div>
     <script>
-      // 1. Create an array of names. You can add as many as you want — all the string
-      // values will be output onto the page within a table.
-      let names = [
+      const message = document.querySelector("#message");
+      const array = [
         "Laurence",
         "Mike",
         "John",
@@ -22,66 +22,27 @@
         "Jane",
       ];
 
-      // 2. Select the page elements as JavaScript objects.
-      const divs = document.querySelectorAll("div");
-
-      // 3. Add a function and also invoke that function within the JavaScript code. The
-      // function can be called build() as it will be building the page content. Within
-      // the build function, you will be setting up the HTML in a table.
       function build() {
-        // 4. Create a table named html, and within the tags, loop through the contents of
-        // the array and output the results into the html table.
-        const html = document.createElement("table");
+        let html = "<table>";
 
-        names.forEach((x) => {
-          const tableRow = document.createElement("tr");
-          const rowCell1 = document.createElement("td");
-          const rowCell2 = document.createElement("td");
-          rowCell1.innerText = x;
-          rowCell2.innerText = names.indexOf(x) + 1;
-          tableRow.appendChild(rowCell1);
-          tableRow.appendChild(rowCell2);
-          html.appendChild(tableRow);
-
-          // 5. Add a class called box to one of the cells that has the index value of the item
-          // from the array, adding the same class to the elements for each additional
-          // row.
-          rowCell2.setAttribute("class", "box");
-
-          // 6. As you create the HTML for the elements within the tr element, create an
-          // attribute called data-row in the main row element that includes the index
-          // value of the item from the array. In addition, add another attribute within the
-          // element called data-name that will contain the text output.
-          rowCell1.setAttribute("data-name", rowCell1.innerText);
-          rowCell2.setAttribute("data-row", rowCell2.innerText);
-
-          // 7. Within the attribute of the same tr element, also add onclick to invoke a
-          // function named getData passing the current element object as this into the
-          // function parameter.
-          tableRow.setAttribute("onclick", "getData(this)");
+        array.forEach((item, index) => {
+          html += `<tr class='box' data-row='${
+            index + 1
+          }' data-name='${item}' onclick='getData(this)'> <td>${item}</td> <td>${
+            index + 1
+          }</td></tr>`;
         });
-
-        // 8. Add the table of HTML code to the page.
-        divs[0].appendChild(html);
-      }
-
-      // 9. Create a function named getData that will be invoked once the HTML tr
-      // elements are clicked. Once the tr element is clicked, use getAttribute to get
-      // the attribute values of the row value and the contents of the text output and
-      // store them in different variables.
-      function getData(el) {
-        const row = el.childNodes[1].getAttribute("data-row");
-        const name = el.childNodes[0].getAttribute("data-name");
-
-        // 10. Using the values in the attributes stored in the preceding step, output the
-        // values into the message element on the page.
-        // 11. Once the user clicks the element on the page, it will display the details
-        // coming from the element attributes within the element with the id of
-        // message.
-        divs[1].innerText = `Data name clicked: ${name}.\n Data row clicked: ${row}.`;
+        html += "</table>";
+        document.getElementById("output").innerHTML = html;
       }
 
       build();
+
+      function getData(element) {
+        let row = element.getAttribute("data-row");
+        let name = element.getAttribute("data-name");
+        message.innerHTML = `<h3>You selected ${name} at row ${row}</h3>`;
+      }
     </script>
   </body>
 </html>
