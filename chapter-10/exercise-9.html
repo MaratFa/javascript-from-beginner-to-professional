@@ -10,21 +10,14 @@
       <button>Button 3</button>
     </div>
     <script>
-      // 1. Select all the page buttons into a JavaScript object.
       const buttons = document.querySelectorAll("button");
-      // 2. Loop through each button, and create a function within the button scope
-      // called output
-      for (let i = 0; i < buttons.length; i++) {
-        //4. As you loop through the buttons attach an event listener that when clicked
-        //invokes the output() function.
-        buttons[i].addEventListener("click", output);
-      }
-      function output() {
-        // 3. Within the output() function, add a console.log() method that outputs
-        // the current object's textContent. You can reference the current parent object
-        // using the this keyword.
-        console.log(this.textContent);
-      }
+
+      buttons.forEach((button) => {
+        function output() {
+          console.log(this.textContent);
+        }
+        button.addEventListener("click", output);
+      });
     </script>
   </body>
 </html>
