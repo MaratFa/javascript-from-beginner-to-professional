@@ -31,38 +31,26 @@ desired functionality with JavaScript: -->
     <script>
       // 1. Using querySelectorAll(), select all the elements with a class of title.
       const titles = document.querySelectorAll(".title");
-
       // 2. Using querySelectorAll(), select all the elements with a class of myText.
       // This should be the same number of elements as the title elements.
       const texts = document.querySelectorAll(".myText");
 
-      // 3. Iterate through all the title elements and add event listeners that, once
+      //  3. Iterate through all the title elements and add event listeners that, once
       // clicked, will select the next element siblings.
       titles.forEach((el) => {
         el.addEventListener("click", () => {
+          // 5. Add a function that will be invoked each time the elements are clicked that
+          // will remove the class of active from all the elements. This will hide all the
+          // elements with myText.
+          texts.forEach((el) => {
+            el.classList.remove("active");
+          });
           // 4. Select the element on the click action and toggle the classlist of the
           // element with the class of active. This will allow the user to click the element
           // and hide and show the below content.
           el.nextElementSibling.classList.toggle("active");
         });
       });
-
-      // 5. Add a function that will be invoked each time the elements are clicked that
-      // will remove the class of active from all the elements. This will hide all the
-      // elements with myText.
-      const btn = document.createElement("button");
-      btn.innerHTML = "<b>Hide all text</b>";
-      btn.style.fontFamily = "Serif";
-      btn.style.fontSize = "large";
-      document.querySelector(".container").appendChild(btn);
-
-      btn.addEventListener("click", removeActive);
-
-      function removeActive() {
-        texts.forEach((el) => {
-          el.classList.remove("active");
-        });
-      }
     </script>
   </body>
 </html>
