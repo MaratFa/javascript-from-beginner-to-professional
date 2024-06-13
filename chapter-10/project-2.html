@@ -42,7 +42,9 @@ default list items. -->
       // people's names array you created. Get the current value in the input field and
       // push that value into the array so the array matches the values on the page.
       btn.addEventListener("click", () => {
-        input.value;
+        myArray.push(input.value);
+        
+        table.appendChild(document.createElement("tr"));
       });
 
       // 4. Run a function to build the content on the page, using the forEach() loop get
