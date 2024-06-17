@@ -24,10 +24,19 @@
         td1.textContent = index + 1;
         td2.textContent = element;
         td3.textContent = 0;
+        tr.classList.add("count");
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
         table.appendChild(tr);
+      });
+
+      let count = document.querySelectorAll(".count");
+      count.forEach((element) => {
+        element.addEventListener("click", () => {
+          element.lastChild.textContent =
+            parseInt(element.lastChild.textContent) + 1;
+        });
       });
 
       btn.addEventListener("click", () => {
@@ -39,10 +48,20 @@
         td1.textContent = myArray.length;
         td2.textContent = input.value;
         td3.textContent = 0;
+        tr.classList.add("count");
+
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
         table.appendChild(tr);
+
+        count = document.querySelectorAll(".count");
+        count.forEach((element) => {
+          element.addEventListener("click", () => {
+            element.lastChild.textContent =
+              parseInt(element.lastChild.textContent) + 1;
+          });
+        });
       });
     </script>
   </body>
