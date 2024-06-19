@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Complete JavaScript Course</title>
+    <title>Interactive Voting System</title>
   </head>
   <body>
-    <div id="message">Complete JavaScript Course</div>
+    <div id="message">Interactive Voting System</div>
     <div>
       <input type="text" id="addFriend" />
       <input type="button" id="addNew" value="Add Friend" />
@@ -12,56 +12,40 @@
     <table id="output"></table>
     <script>
       const myArray = ["Laurence", "Mike", "John", "Larry"];
-      const input = document.getElementById("addFriend");
-      const btn = document.getElementById("addNew");
+      const addFriend = document.getElementById("addFriend");
+      const addNew = document.getElementById("addNew");
       const table = document.getElementById("output");
 
-      myArray.forEach((element, index) => {
+      window.onload = build;
+
+      function build() {
+        myArray.forEach((el, i) => {
+          adder(el, i, 0);
+        });
+      }
+
+      function adder(name, index, counter) {
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
+        td1.innerText = index + 1;
         const td2 = document.createElement("td");
+        td2.innerText = name;
         const td3 = document.createElement("td");
-        td1.textContent = index + 1;
-        td2.textContent = element;
-        td3.textContent = 0;
-        tr.classList.add("count");
+        td3.innerText = counter;
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
-        table.appendChild(tr);
-      });
-
-      let count = document.querySelectorAll(".count");
-      count.forEach((element) => {
-        element.addEventListener("click", () => {
-          element.lastChild.textContent =
-            parseInt(element.lastChild.textContent) + 1;
+        tr.addEventListener("click", () => {
+          counter++;
+          td3.innerText = counter;
         });
-      });
-
-      btn.addEventListener("click", () => {
-        myArray.push(input.value);
-        const tr = document.createElement("tr");
-        const td1 = document.createElement("td");
-        const td2 = document.createElement("td");
-        const td3 = document.createElement("td");
-        td1.textContent = myArray.length;
-        td2.textContent = input.value;
-        td3.textContent = 0;
-        tr.classList.add("count");
-
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-        tr.appendChild(td3);
         table.appendChild(tr);
+      }
 
-        count = document.querySelectorAll(".count");
-        count.forEach((element) => {
-          element.addEventListener("click", () => {
-            element.lastChild.textContent =
-              parseInt(element.lastChild.textContent) + 1;
-          });
-        });
+      addNew.addEventListener("click", () => {
+        const newFriend = addFriend.value;
+        myArray.push(newFriend);
+        adder(newFriend, myArray.length, 0);
       });
     </script>
   </body>
