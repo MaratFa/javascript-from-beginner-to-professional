@@ -29,19 +29,57 @@
       <button>Start Game</button>
     </div>
     <script>
-        const words = [
-          "javascript",
-          "html",
-          "css",
-          "react",
-          "angular",
-          "node",
-          "express",
-          "mongodb",
-          "mysql",
-          "postgresql",
-        ];
+      // 1. Set up an array that contains some words or phrases that you want to use in
+      // the game.
+      const words = [
+        "javascript",
+        "html",
+        "css",
+        "react",
+        "angular",
+        "node",
+        "express",
+        "mongodb",
+        "mysql",
+        "postgresql",
+      ];
+
+      // 2. In JavaScript, create a main game object containing a property to contain the
+      // current word solution, and another property to contain the array of letters
+      // of the solution. It should also create an array to contain the page elements
+      // and correspond with the values of the index values of each letter from the
+      // solution, and finally add a property to count the number of letters left to
+      // solve and end the game when needed.
+      const game = {
+        solution: "hhh",
+        solutionLetters: [],
+        pageElements: [],
+        lettersLeft: 0,
+      };
+
+      game.solutionLetters = game.solution.split("");
+      game.lettersLeft = game.solution.length;
+
+      // 3. Select all the page elements into variables so they are easier to access in the
+      // code.
+      const gameArea = document.querySelector(".gameArea");
+      const score = document.querySelector(".score");
+      const puzzle = document.querySelector(".puzzle");
+      const letters = document.querySelector(".letters");
+      const button = document.querySelector("button");
+
+      // 4. Add an event listener to the Start Game button, making it clickable, and
+      // when it gets clicked it should launch a function called startGame().
+      button.addEventListener("click", startGame);
+
+      // 5. Within startGame(), check if the words array has any words left. If it does,
+      // then hide the button by setting the .display object to none. Clear the game
+      // contents and set the total to 0. Within the current word in the game object,
+      // assign a value, which should be the response of shift() from the array
+      // containing the in-game words.
+      function startGame() {
         
+      }
     </script>
   </body>
 </html>
