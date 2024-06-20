@@ -51,13 +51,12 @@
       // solution, and finally add a property to count the number of letters left to
       // solve and end the game when needed.
       const game = {
-        solution: "hhh",
+        solution: "",
         solutionLetters: [],
         pageElements: [],
         lettersLeft: 0,
       };
 
-      game.solutionLetters = game.solution.split("");
       game.lettersLeft = game.solution.length;
 
       // 3. Select all the page elements into variables so they are easier to access in the
@@ -70,7 +69,7 @@
 
       // 4. Add an event listener to the Start Game button, making it clickable, and
       // when it gets clicked it should launch a function called startGame().
-      button.addEventListener("click", startGame);
+      button.onclick = startGame;
 
       // 5. Within startGame(), check if the words array has any words left. If it does,
       // then hide the button by setting the .display object to none. Clear the game
@@ -78,7 +77,45 @@
       // assign a value, which should be the response of shift() from the array
       // containing the in-game words.
       function startGame() {
-        
+        if (words.length > 0) {
+          button.style.display = "none";
+        }
+        const total = 0;
+        game.solution = words.shift();
+        // 6. In the game solution, convert the string into an array of all the characters in
+        // the word solution using split().
+        game.solutionLetters = game.solution.split("");
+        builder();
+      }
+
+      // 7. Create a function called builder() that can be used to build the game board.
+      // Invoke the function within the startGame() function once all the game values
+      // are cleared and set.
+      function builder() {
+        // 9. In the builder() function, which will also get invoked once startGame() is
+        // run, clear the innerHTML from the letters and puzzle page elements.
+        puzzle.innerHTML = "";
+        letters.innerHTML = "";
+        // 10. Iterate through the game solution array, getting each letter of the solution.
+        // Use the builder() function to generate page elements, add an output value
+        // of -, set a class, and append it to the main puzzle page element.
+        game.solutionLetters.forEach((letter) => {
+          console.log(letter);
+          createElement("div", puzzle, "-", "boxE");
+        });
+      }
+
+      // 8. Create a separate function that you can use to generate page elements. In the
+      // parameters, get the type of element, the parent that the new element will be
+      // appended to, the output content for the new element, and a class to add to
+      // the new element. Using a temporary variable, create the element, add the
+      // class, append to the parent, set the textContent, and return the element.
+      function createElement(type, parent, output, classAdded) {
+        const temp = document.createElement(type);
+        temp.classList.add(classAdded);
+        parent.appendChild(temp);
+        temp.textContent = output;
+        return temp;
       }
     </script>
   </body>
