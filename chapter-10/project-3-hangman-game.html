@@ -102,15 +102,20 @@
         game.solutionLetters.forEach((letter) => {
           console.log(letter);
           createElement("div", puzzle, "-", "boxE");
+          // 11. Check if the value is blank, and if it is, clear textContent and update the
+          // border to white. If it's not blank, increment the total so that it reflects the total
+          // number of letters that must be guessed. Push the new element into the game
+          // puzzle array.
+          if (letter === "") {
+            puzzle.lastElementChild.textContent = "";
+            puzzle.lastElementChild.classList.remove("boxE");
+            puzzle.lastElementChild.classList.add("boxD");
+          } else {
+            game.lettersLeft++;
+          }
         });
-        // 11. Check if the value is blank, and if it is, clear textContent and update the
-        // border to white. If it's not blank, increment the total so that it reflects the total
-        // number of letters that must be guessed. Push the new element into the game
-        // puzzle array.
 
-        
-        
-
+        updateScore();
       }
 
       // 8. Create a separate function that you can use to generate page elements. In the
@@ -124,6 +129,12 @@
         parent.appendChild(temp);
         temp.textContent = output;
         return temp;
+      }
+
+      // 12. Create a new function to update the score so that you can output the current
+      // number of letters left. Add it to the builder() function.
+      function updateScore() {
+        score.textContent = game.lettersLeft;
       }
     </script>
   </body>
