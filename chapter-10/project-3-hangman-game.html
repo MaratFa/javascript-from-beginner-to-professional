@@ -100,7 +100,6 @@
         // Use the builder() function to generate page elements, add an output value
         // of -, set a class, and append it to the main puzzle page element.
         game.solutionLetters.forEach((letter) => {
-          console.log(letter);
           createElement("div", puzzle, "-", "boxE");
           // 11. Check if the value is blank, and if it is, clear textContent and update the
           // border to white. If it's not blank, increment the total so that it reflects the total
@@ -108,14 +107,30 @@
           // puzzle array.
           if (letter === "") {
             puzzle.lastElementChild.textContent = "";
-            puzzle.lastElementChild.classList.remove("boxE");
-            puzzle.lastElementChild.classList.add("boxD");
+            puzzle.lastElementChild.classList.remove("boxD");
+            puzzle.lastElementChild.classList.add("boxE");
           } else {
             game.lettersLeft++;
           }
         });
 
         updateScore();
+
+        // 13. Create a loop to represent the 26 letters of the alphabet. You can generate
+        // the letter by using an array containing all the letters. The string method
+        // fromCharCode() will return the character from the numeric representation.
+        for (i = 97; i < 123; i++) {
+          // 14. Create elements for each letter, adding a class of box and appending it to the
+          // letters page element. As each element gets created, add an event listener
+          // that runs a function called checker().
+          let char = createElement(
+            "div",
+            letters,
+            String.fromCharCode(i).toUpperCase(),
+            "boxD"
+          );
+          char.addEventListener("click", checker);
+        }
       }
 
       // 8. Create a separate function that you can use to generate page elements. In the
@@ -136,7 +151,20 @@
       function updateScore() {
         score.textContent = game.lettersLeft;
       }
+
+      // 15. Once the letter gets clicked, we need to invoke the checker() function, which
+      // will remove the main class, add another class, remove the event listener, and
+      // update the background color. Also invoke a function called checkLetter(),
+      // passing the value of the clicked letter into the argument.
+      function checker() {
+        console.log("test");
+
+
+
+
+
+        
+      }
     </script>
   </body>
 </html>
-
