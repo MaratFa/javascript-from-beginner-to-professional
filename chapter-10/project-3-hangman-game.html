@@ -129,18 +129,7 @@
             String.fromCharCode(i).toUpperCase(),
             "boxD"
           );
-
-          // 15. Once the letter gets clicked, we need to invoke the checker() function, which
-          // will remove the main class, add another class, remove the event listener, and
-          // update the background color. Also invoke a function called checkLetter(),
-          // passing the value of the clicked letter into the argument.
-          char.addEventListener("click", function(char) {
-            console.log(char.srcElement.outerText);
-
-
-            
-
-          });
+          char.addEventListener("click", checker);
         }
       }
 
@@ -161,6 +150,39 @@
       // number of letters left. Add it to the builder() function.
       function updateScore() {
         score.textContent = game.lettersLeft;
+      }
+
+      // 15. Once the letter gets clicked, we need to invoke the checker() function, which
+      // will remove the main class, add another class, remove the event listener, and
+      // update the background color. Also invoke a function called checkLetter(),
+      // passing the value of the clicked letter into the argument.
+      function checker() {
+        this.classList.remove("boxD");
+        this.classList.add("boxE");
+        this.removeEventListener("click", checker);
+        checkLetter(this.innerHTML);
+      }
+
+      // 16. The checkLetter() function will loop through all the solution letters. Add a
+      // condition to check if the solution letter is equal to the letter selected by the
+      // player. Make sure to convert the inputted letter to uppercase so that you can
+      // match the letters accurately. Update the matching letters in the puzzle using
+      // the game puzzle array and the index from the letter in the solution. The index
+      // values will be the same on each, which provides an easy way to match the
+      // visual representation with what is in the array.
+      function checkLetter(checkedLetter) {
+        game.solutionLetters.forEach((solutionLetter) => {
+          if (solutionLetter.toUpperCase() == checkedLetter) {
+            const index = game.solutionLetters.indexOf(solutionLetter);
+            puzzle.childNodes[index].innerText = checkedLetter;
+
+
+
+
+
+            
+          }
+        });
       }
     </script>
   </body>
