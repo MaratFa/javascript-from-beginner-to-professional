@@ -129,7 +129,18 @@
             String.fromCharCode(i).toUpperCase(),
             "boxD"
           );
-          char.addEventListener("click", checker);
+
+          // 15. Once the letter gets clicked, we need to invoke the checker() function, which
+          // will remove the main class, add another class, remove the event listener, and
+          // update the background color. Also invoke a function called checkLetter(),
+          // passing the value of the clicked letter into the argument.
+          char.addEventListener("click", function(char) {
+            console.log(char.srcElement.outerText);
+
+
+            
+
+          });
         }
       }
 
@@ -150,20 +161,6 @@
       // number of letters left. Add it to the builder() function.
       function updateScore() {
         score.textContent = game.lettersLeft;
-      }
-
-      // 15. Once the letter gets clicked, we need to invoke the checker() function, which
-      // will remove the main class, add another class, remove the event listener, and
-      // update the background color. Also invoke a function called checkLetter(),
-      // passing the value of the clicked letter into the argument.
-      function checker() {
-        console.log("test");
-
-
-
-
-
-        
       }
     </script>
   </body>
