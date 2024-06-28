@@ -150,6 +150,12 @@
       // number of letters left. Add it to the builder() function.
       function updateScore() {
         score.textContent = game.lettersLeft;
+        // 18. In the updatescore() function, set the score to the number of letters left. If the
+        // total left is less than or equal to zero, the game is over. Show the button so
+        // that the player has an option for the next phrase
+        if (game.lettersLeft <= 0) {
+          button.removeAttribute('style')
+        }
       }
 
       // 15. Once the letter gets clicked, we need to invoke the checker() function, which
@@ -171,17 +177,18 @@
       // values will be the same on each, which provides an easy way to match the
       // visual representation with what is in the array.
       function checkLetter(checkedLetter) {
+        let i = 0;
         game.solutionLetters.forEach((solutionLetter) => {
           if (solutionLetter.toUpperCase() == checkedLetter) {
-            const index = game.solutionLetters.indexOf(solutionLetter);
-            puzzle.childNodes[index].innerText = checkedLetter;
-
-
-
-
-
-            
+            puzzle.childNodes[i].innerText = checkedLetter;
+            // 17. Subtract one from the game global object that tracks the total letters left to be
+            // solved, invoke the updatescore() function to check if the game is over, and
+            // update the score. Set the textContent of the puzzle to the letter removing the
+            // original dash.
+            game.lettersLeft -= 1;
+            updateScore();
           }
+          i++;
         });
       }
     </script>
