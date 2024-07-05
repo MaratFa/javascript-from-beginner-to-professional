@@ -47,13 +47,16 @@
       function startGame() {
         if (words.length > 0) {
           button.style.display = "none";
-          game.currentWordSolution = "";
-          game.lettersOfSolution = [];
-          game.pageElements = [];
-          game.lettersLeft = 0;
         }
+        puzzle.textContent = "";
+        score.textContent = "";
+        game.currentWordSolution = words.shift();
+        game.lettersOfSolution = game.currentWordSolution.split("");
+
+        builder();
       }
-      
+
+      function builder() {}
     </script>
   </body>
 </html>
