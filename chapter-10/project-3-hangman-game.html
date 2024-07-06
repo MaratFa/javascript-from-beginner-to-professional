@@ -56,7 +56,24 @@
         builder();
       }
 
-      function builder() {}
+      function builder() {
+        lettersOfSolution.forEach(letter => {
+              pageEl(
+                div, 
+                puzzle,
+                letter,
+                "boxD"
+              )
+        });
+      }
+
+      function pageEl (elType, elParent, elOutput, elClass) {
+        const temp = document.createElement(elType);
+        temp.classList.add(elClass);
+        temp.textContent = elOutput;
+        elParent.appendChild(temp);
+        return temp;
+      }
     </script>
   </body>
 </html>
