@@ -30,6 +30,7 @@
     </div>
     <script>
       const words = ["Array", "Button", "JavaScript", "Hello world"];
+
       const game = {
         currentWordSolution: "",
         lettersOfSolution: [],
@@ -47,32 +48,36 @@
       function startGame() {
         if (words.length > 0) {
           button.style.display = "none";
+          puzzle.textContent = "";
+          score.textContent = 0;
+          game.currentWordSolution = words.shift();
+          game.lettersOfSolution = game.currentWordSolution.split("");
         }
-        puzzle.textContent = "";
-        score.textContent = "";
-        game.currentWordSolution = words.shift();
-        game.lettersOfSolution = game.currentWordSolution.split("");
 
         builder();
+
+        scoreUpdate();
       }
 
       function builder() {
-        lettersOfSolution.forEach(letter => {
-              pageEl(
-                div, 
-                puzzle,
-                letter,
-                "boxD"
-              )
+        game.lettersOfSolution.forEach((letter) => {
+          pageEl("div", puzzle, "-", "boxD");
         });
       }
 
-      function pageEl (elType, elParent, elOutput, elClass) {
+      function pageEl(elType, elParent, elOutput, elClass) {
         const temp = document.createElement(elType);
         temp.classList.add(elClass);
         temp.textContent = elOutput;
         elParent.appendChild(temp);
-        return temp;
+      }
+
+      function scoreUpdate() {
+        puzzle.childNodes.forEach((letter) => {
+          if (letter.outerText === "-") {
+            score.textContent = Number(score.textContent) + 1;
+          }
+        });
       }
     </script>
   </body>
