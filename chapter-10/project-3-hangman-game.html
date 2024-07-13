@@ -30,6 +30,34 @@
     </div>
     <script>
       const words = ["Array", "Button", "JavaScript", "Hello world"];
+      const alphabet = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+      ];
 
       const game = {
         currentWordSolution: "",
@@ -63,6 +91,10 @@
         game.lettersOfSolution.forEach((letter) => {
           pageEl("div", puzzle, "-", "boxD");
         });
+
+        alphabet.forEach(letter => {
+          pageEl("div", letters, letter, "box");
+        })
       }
 
       function pageEl(elType, elParent, elOutput, elClass) {
