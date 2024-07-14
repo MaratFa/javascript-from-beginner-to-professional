@@ -92,9 +92,12 @@
           pageEl("div", puzzle, "-", "boxD");
         });
 
-        alphabet.forEach(letter => {
+        alphabet.forEach((letter) => {
           pageEl("div", letters, letter, "box");
-        })
+        });
+        letters.childNodes.forEach((el) => {
+          el.addEventListener("click", checker);
+        });
       }
 
       function pageEl(elType, elParent, elOutput, elClass) {
@@ -110,6 +113,18 @@
             score.textContent = Number(score.textContent) + 1;
           }
         });
+      }
+
+      function checker() {
+        this.classList.remove("box");
+        this.classList.add("boxE");
+        this.removeEventListener("click", checker);
+        this.style.backgroundColor = "gainsboro";
+        checkLetter(this);
+      }
+
+      function checkLetter(letter) {
+        console.log(letter.innerText)
       }
     </script>
   </body>
