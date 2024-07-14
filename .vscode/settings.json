@@ -1,0 +1,4 @@
+{
+    "gitlens.telemetry.enabled": false,
+    "code-runner.enableAppInsights": false
+}
