@@ -29,7 +29,7 @@
       <button>Start Game</button>
     </div>
     <script>
-      const words = ["Array", "Button", "JavaScript", "Hello world"];
+      const words = ["Hello world", "Array", "Button", "JavaScript"];
       const alphabet = [
         "A",
         "B",
@@ -66,6 +66,7 @@
         lettersLeft: "",
       };
 
+      const gameArea = document.querySelector(".gameArea");
       const score = document.querySelector(".score");
       const puzzle = document.querySelector(".puzzle");
       const letters = document.querySelector(".letters");
@@ -80,16 +81,21 @@
           score.textContent = 0;
           game.currentWordSolution = words.shift();
           game.lettersOfSolution = game.currentWordSolution.split("");
+          letters.innerText = "";
+          builder();
+          scoreUpdate();
+        } else {
+          alert("All words have been guessed!");
         }
-
-        builder();
-
-        scoreUpdate();
       }
 
       function builder() {
         game.lettersOfSolution.forEach((letter) => {
-          pageEl("div", puzzle, "-", "boxD");
+          if (letter === " ") {
+            pageEl("div", puzzle, " ", "boxD");
+          } else {
+            pageEl("div", puzzle, "-", "boxD");
+          }
         });
 
         alphabet.forEach((letter) => {
@@ -108,23 +114,35 @@
       }
 
       function scoreUpdate() {
+        let temp = 0;
+        score.innerHTML = `Letters left: ${temp}`;
         puzzle.childNodes.forEach((letter) => {
           if (letter.outerText === "-") {
-            score.textContent = Number(score.textContent) + 1;
+            temp++;
+            score.innerHTML = `Letters left: ${temp}`;
           }
         });
+        if (temp <= 0) {
+          button.style.display = null;
+          alert("You Win!");
+        }
       }
-
       function checker() {
         this.classList.remove("box");
         this.classList.add("boxE");
         this.removeEventListener("click", checker);
         this.style.backgroundColor = "gainsboro";
-        checkLetter(this);
+        checkLetter(this.innerText);
+        scoreUpdate();
       }
 
       function checkLetter(letter) {
-        console.log(letter.innerText)
+        game.lettersOfSolution.forEach((e, i) => {
+          if (e.toUpperCase() === letter) {
+            puzzle.childNodes[i].innerText = letter;
+            score.innerText = Number(score.innerText) - 1;
+          }
+        });
       }
     </script>
   </body>
