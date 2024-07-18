@@ -29,7 +29,74 @@
       <button>Start Game</button>
     </div>
     <script>
+      const game = {
+        currentWordSolution: "",
+        lettersOfSolution: [],
+        pageElements: [],
+        lettersLeft: 0,
+      };
       const words = ["Hello world", "Array", "Button", "JavaScript"];
+      const score = document.querySelector(".score");
+      const puzzle = document.querySelector(".puzzle");
+      const letters = document.querySelector(".letters");
+      const button = document.querySelector("button");
+
+      button.onclick = startGame;
+
+      function startGame() {
+        if (words.length > 0) {
+          button.style.display = "none";
+          game.pageElements = [];
+          game.lettersLeft = 0;
+          game.currentWordSolution = words.shift();
+          game.lettersOfSolution = game.currentWordSolution.split("");
+          builder();
+        } else {
+          score.textContent = "All words have been guessed!";
+        }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      function builder() {
+        game.lettersOfSolution.forEach((letter) => {
+          if (letter === " ") {
+            pageEl("div", puzzle, " ", "boxD");
+          } else {
+            pageEl("div", puzzle, "-", "boxD");
+          }
+        });
+
+        alphabet.forEach((letter) => {
+          pageEl("div", letters, letter, "box");
+        });
+        letters.childNodes.forEach((el) => {
+          el.addEventListener("click", checker);
+        });
+      }
+
+      function pageEl(elType, elParent, elOutput, elClass) {
+        const temp = document.createElement(elType);
+        temp.classList.add(elClass);
+        elParent.append(temp);
+        temp.textContent = elOutput;
+        return temp;
+      }
+
+      const gameArea = document.querySelector(".gameArea");
       const alphabet = [
         "A",
         "B",
@@ -58,60 +125,6 @@
         "Y",
         "Z",
       ];
-
-      const game = {
-        currentWordSolution: "",
-        lettersOfSolution: [],
-        pageElements: [],
-        lettersLeft: "",
-      };
-
-      const gameArea = document.querySelector(".gameArea");
-      const score = document.querySelector(".score");
-      const puzzle = document.querySelector(".puzzle");
-      const letters = document.querySelector(".letters");
-      const button = document.querySelector("button");
-
-      button.onclick = startGame;
-
-      function startGame() {
-        if (words.length > 0) {
-          button.style.display = "none";
-          puzzle.textContent = "";
-          score.textContent = 0;
-          game.currentWordSolution = words.shift();
-          game.lettersOfSolution = game.currentWordSolution.split("");
-          letters.innerText = "";
-          builder();
-          scoreUpdate();
-        } else {
-          alert("All words have been guessed!");
-        }
-      }
-
-      function builder() {
-        game.lettersOfSolution.forEach((letter) => {
-          if (letter === " ") {
-            pageEl("div", puzzle, " ", "boxD");
-          } else {
-            pageEl("div", puzzle, "-", "boxD");
-          }
-        });
-
-        alphabet.forEach((letter) => {
-          pageEl("div", letters, letter, "box");
-        });
-        letters.childNodes.forEach((el) => {
-          el.addEventListener("click", checker);
-        });
-      }
-
-      function pageEl(elType, elParent, elOutput, elClass) {
-        const temp = document.createElement(elType);
-        temp.classList.add(elClass);
-        temp.textContent = elOutput;
-        elParent.appendChild(temp);
-      }
 
       function scoreUpdate() {
         let temp = 0;
