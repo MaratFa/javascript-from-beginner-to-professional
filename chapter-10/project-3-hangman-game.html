@@ -41,6 +41,8 @@
       const letters = document.querySelector(".letters");
       const button = document.querySelector("button");
 
+      const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
       button.onclick = startGame;
 
       function startGame() {
@@ -56,38 +58,6 @@
         }
       }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-      function builder() {
-        game.lettersOfSolution.forEach((letter) => {
-          if (letter === " ") {
-            pageEl("div", puzzle, " ", "boxD");
-          } else {
-            pageEl("div", puzzle, "-", "boxD");
-          }
-        });
-
-        alphabet.forEach((letter) => {
-          pageEl("div", letters, letter, "box");
-        });
-        letters.childNodes.forEach((el) => {
-          el.addEventListener("click", checker);
-        });
-      }
-
       function pageEl(elType, elParent, elOutput, elClass) {
         const temp = document.createElement(elType);
         temp.classList.add(elClass);
@@ -96,64 +66,51 @@
         return temp;
       }
 
-      const gameArea = document.querySelector(".gameArea");
-      const alphabet = [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "F",
-        "G",
-        "H",
-        "I",
-        "J",
-        "K",
-        "L",
-        "M",
-        "N",
-        "O",
-        "P",
-        "Q",
-        "R",
-        "S",
-        "T",
-        "U",
-        "V",
-        "W",
-        "X",
-        "Y",
-        "Z",
-      ];
-
       function scoreUpdate() {
-        let temp = 0;
-        score.innerHTML = `Letters left: ${temp}`;
-        puzzle.childNodes.forEach((letter) => {
-          if (letter.outerText === "-") {
-            temp++;
-            score.innerHTML = `Letters left: ${temp}`;
-          }
-        });
-        if (temp <= 0) {
-          button.style.display = null;
-          alert("You Win!");
+        score.textContent = `Letters Left : ${game.lettersLeft}`;
+        if (game.lettersLeft <= 0) {
+          console.log("Game Over");
+          score.textContent = "Game Over";
+          button.style.display = "block";
         }
       }
-      function checker() {
-        this.classList.remove("box");
-        this.classList.add("boxE");
-        this.removeEventListener("click", checker);
-        this.style.backgroundColor = "gainsboro";
-        checkLetter(this.innerText);
-        scoreUpdate();
+
+      function builder() {
+        letters.innerHTML = "";
+        puzzle.innerHTML = "";
+        game.lettersOfSolution.forEach((letter) => {
+          let div = pageEl("div", puzzle, "-", "boxE");
+          if (letter == " ") {
+            div.style.borderColor = "white";
+            div.textContent = " ";
+          } else {
+            game.lettersLeft++;
+          }
+          game.pageElements.push(div);
+          scoreUpdate();
+        });
+
+        alphabet.forEach((letter) => {
+          let div = pageEl("div", letters, letter, "box");
+
+          let checker = function (el) {
+            div.style.backgroundColor = "#ddd";
+            div.classList.remove("box");
+            div.classList.add("boxD");
+            div.removeEventListener("click", checker);
+            checkLetter(letter);
+          };
+          div.addEventListener("click", checker);
+        });
       }
 
       function checkLetter(letter) {
-        game.lettersOfSolution.forEach((e, i) => {
-          if (e.toUpperCase() === letter) {
-            puzzle.childNodes[i].innerText = letter;
-            score.innerText = Number(score.innerText) - 1;
+        console.log(letter);
+        game.lettersOfSolution.forEach((element, index) => {
+          if (element.toUpperCase() == letter) {
+            game.pageElements[index].textContent = letter;
+            game.lettersLeft--;
+            scoreUpdate();
           }
         });
       }
