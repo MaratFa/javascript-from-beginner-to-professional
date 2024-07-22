@@ -9,22 +9,20 @@
     <p id="p">Hello World</p>
     <script>
       let darkMode = false;
-      window.onclick = function () {
-        changeColor();
-      };
-
-      function changeColor() {
-        if (darkMode) {
-          document.body.style.backgroundColor = "white";
-          document.body.style.color = "black";
-          darkMode = false;
-        } else {
-          document.body.style.backgroundColor = "black";
-          document.body.style.color = "white";
-          darkMode = true;
+      window.onclick = () => {
+        {
+          if (darkMode) {
+            document.body.style.backgroundColor = "white";
+            document.body.style.color = "black";
+            darkMode = false;
+          } else {
+            document.body.style.backgroundColor = "black";
+            document.body.style.color = "white";
+            darkMode = true;
+          }
+          console.log(`Dark mode is ${darkMode}`);
         }
-        console.log(`Dark mode is ${darkMode}`);
-      }
+      };
     </script>
   </body>
 </html>
