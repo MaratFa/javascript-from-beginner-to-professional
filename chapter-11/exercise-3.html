@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let string1 = "Window Ready";
+      let string2 = "Document Ready";
+
+      document.addEventListener("DOMContentLoaded", function (e) {
+        message(string2, e);
+      });
+
+      window.onload = function (e) {
+        message(string1, e);
+      };
+
+      function message(string, e) {
+        console.log(string, ": ", e);
+      }
+    </script>
+  </body>
+</html>
