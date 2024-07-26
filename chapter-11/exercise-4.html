@@ -1,13 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+<html>
+  <head></head>
   <body>
+    <div class="element"></div>
     <script>
-    	
+      const el = document.querySelector(".element");
+
+      el.innerText = "Hello World";
+      el.style.height = "300px";
+      el.style.width = "700px";
+      el.style.backgroundColor = "lightblue";
+
+      el.addEventListener("mousedown", () => {
+        func(event, "red");
+      });
+      el.addEventListener("mouseover", () => {
+        func(event, "green");
+      });
+      el.addEventListener("mouseout", () => {
+        func(event, "yellow");
+      });
+      el.addEventListener("mouseup", () => {
+        func(event, "blue");
+      });
+
+      function func(event, color) {
+        console.log(event.type);
+        console.log(color);
+        el.style.backgroundColor = color;
+      }
     </script>
   </body>
 </html>
