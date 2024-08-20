@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Tester</title>
+  </head>
+  <body>
+    <div class="output"></div>
+    <input type="text" name="message" placeholder="Your Message" />
+    <button class="btn1">Button 1</button>
+    <button class="btn2">Button 2</button>
+    <div>
+      <button class="btn3">Log</button>
+    </div>
+    <script>
+      const output = document.querySelector(".output");
+      const inp = document.querySelector("input");
+      const btn1 = document.querySelector(".btn1");
+      const btn2 = document.querySelector(".btn2");
+      const btn3 = document.querySelector(".btn3");
+
+      const log = [];
+
+      function captFunc(event) {
+        log.push(event);
+      }
+
+      btn1.addEventListener("click", captFunc);
+      btn2.addEventListener("click", captFunc);
+      btn3.addEventListener("click", () => console.log(log));
+    </script>
+  </body>
+</html>
