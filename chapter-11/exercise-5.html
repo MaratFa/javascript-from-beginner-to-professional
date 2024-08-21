@@ -6,26 +6,40 @@
   <body>
     <div class="output"></div>
     <input type="text" name="message" placeholder="Your Message" />
-    <button class="btn1">Button 1</button>
-    <button class="btn2">Button 2</button>
+    <button class="add">Add text</button>
+    <button class="clea">Clear</button>
     <div>
-      <button class="btn3">Log</button>
+      <button class="log">Log</button>
     </div>
     <script>
       const output = document.querySelector(".output");
       const inp = document.querySelector("input");
-      const btn1 = document.querySelector(".btn1");
-      const btn2 = document.querySelector(".btn2");
-      const btn3 = document.querySelector(".btn3");
+      const btn1 = document.querySelector(".add");
+      const btn2 = document.querySelector(".clea");
+      const btn3 = document.querySelector(".log");
 
       const log = [];
 
       function captFunc(event) {
-        log.push(event);
+        const obj = {
+          "Inputed text": inp.value,
+          Time: new Date(),
+          "Event type": event.type,
+          "Target element": event.target.tagName,
+          "Target className": event.target.className,
+        };
+        log.push(obj);
+
+        output.textContent = inp.value;
+        inp.value = "";
       }
 
       btn1.addEventListener("click", captFunc);
-      btn2.addEventListener("click", captFunc);
+      btn2.addEventListener("click", () => {
+        output.textContent = "";
+        inp.value = "";
+        log.length = 0;
+      });
       btn3.addEventListener("click", () => console.log(log));
     </script>
   </body>
