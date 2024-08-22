@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JS Tester</title>
+    <title>Exercise 11.5</title>
   </head>
   <body>
     <div class="output"></div>
     <input type="text" name="message" placeholder="Your Message" />
-    <button class="add">Add text</button>
-    <button class="clea">Clear</button>
+    <button class="add">Add</button>
+    <button class="reset">Reset</button>
     <div>
       <button class="log">Log</button>
     </div>
     <script>
+      const input = document.querySelector('input[name="message"]');
       const output = document.querySelector(".output");
-      const inp = document.querySelector("input");
       const btn1 = document.querySelector(".add");
-      const btn2 = document.querySelector(".clea");
+      const btn2 = document.querySelector(".reset");
       const btn3 = document.querySelector(".log");
 
       const log = [];
 
-      function captFunc(event) {
-        const obj = {
-          "Inputed text": inp.value,
-          Time: new Date(),
-          "Event type": event.type,
-          "Target element": event.target.tagName,
-          "Target className": event.target.className,
-        };
-        log.push(obj);
-
-        output.textContent = inp.value;
-        inp.value = "";
-      }
-
       btn1.addEventListener("click", captFunc);
       btn2.addEventListener("click", () => {
         output.textContent = "";
-        inp.value = "";
+        input.value = "";
         log.length = 0;
       });
       btn3.addEventListener("click", () => console.log(log));
+
+      function captFunc(event) {
+        const temp = {
+          "Inputed text": input.value,
+          Time: new Date().toLocaleString(),
+          "Target element": event.target.tagName,
+          "Target className": event.target.className,
+        };
+        log.push(temp);
+
+        output.textContent = input.value;
+        input.value = "";
+      }
     </script>
   </body>
 </html>
