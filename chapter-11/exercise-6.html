@@ -17,6 +17,20 @@
       <div class="box" id="box2">Box #3</div>
       <div class="box" id="box3">Box #4</div>
     </div>
-    <script></script>
+    <script>
+      const container = document.querySelector(".container");
+      const boxes = document.querySelectorAll(".box");
+
+      container.addEventListener("click", () => {
+        console.log(1);
+        console.log(4);
+      });
+
+      boxes.forEach((box) => {
+        box.addEventListener("click", () => {
+          console.log(box.id);
+        });
+      });
+    </script>
   </body>
 </html>
