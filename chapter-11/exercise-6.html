@@ -21,15 +21,40 @@
       const container = document.querySelector(".container");
       const boxes = document.querySelectorAll(".box");
 
-      container.addEventListener("click", () => {
-        console.log(1);
-        console.log(4);
-      });
+      container.addEventListener(
+        "click",
+        (e) => {
+          console.log(4);
+        },
+        false
+      );
 
-      boxes.forEach((box) => {
-        box.addEventListener("click", () => {
-          console.log(box.id);
-        });
+      container.addEventListener(
+        "click",
+        (e) => {
+          console.log(1);
+        },
+        true
+      );
+
+      boxes.forEach((e) => {
+        e.addEventListener(
+          "click",
+          (e) => {
+            console.log(3);
+            console.log(e.target.textContent);
+          },
+          false
+        );
+
+        e.addEventListener(
+          "click",
+          (e) => {
+            console.log(2);
+            console.log(e.target.textContent);
+          },
+          true
+        );
       });
     </script>
   </body>
